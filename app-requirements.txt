@@ -1,0 +1,8 @@
+bower@1.6.8
+generator-angular@0.14.0
+generator-karma@1.0.1
+grunt-cli@0.1.13
+jasmine-core@2.3.4
+karma@0.13.15
+karma-phantomjs-launcher@0.2.1
+yo@1.5.0
