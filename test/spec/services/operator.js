@@ -28,7 +28,7 @@ describe('Service: operator', function () {
   it('should do subtraction', function () {
     expect(!!operator).toBe(true);
 
-    question = operator.makeOperator(operation.SUBSTRACTION, 14, 7);
+    question = operator.makeOperator(operation.SUBTRACTION, 14, 7);
 
     expect(!!question).toBe(true);
     expect(question.operate()).toBe(7);
@@ -36,7 +36,7 @@ describe('Service: operator', function () {
   it('should do multiplication', function () {
     expect(!!operator).toBe(true);
 
-    question = operator.makeOperator(operation.MULTIPLCATION, 3, 7);
+    question = operator.makeOperator(operation.MULTIPLICATION, 3, 7);
 
     expect(!!question).toBe(true);
     expect(question.operate()).toBe(21);

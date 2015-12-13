@@ -8,7 +8,7 @@
  * Factory in the flashApp.
  */
 angular.module('flashApp')
-  .factory('operator', ['operations', function (operations) {
+  .factory('operator', ['operation', function (operation) {
 
     function BinaryOperator(op1, op2) {
 	this.setOperands(op1, op2);
@@ -51,15 +51,15 @@ angular.module('flashApp')
     Multiplication.prototype = Object.create(BinaryOperator.prototype);
     Division.prototype = Object.create(BinaryOperator.prototype);
 
-    Addition.symbol = '+';
-    Subtraction.symbol = '-';
-    Multiplication.symbol = '';
-    Division.symbol = '';
+    Addition.prototype.symbol = '+';
+    Subtraction.prototype.symbol = '-';
+    Multiplication.prototype.symbol = '';
+    Division.prototype.symbol = '';
 
-    Addition.operate = function() { return this.op1 + this.op2; };
-    Subtraction.operate = function() { return this.op1 - this.op2; };
-    Multiplication.operate = function() { return this.op1 * this.op2; };
-    Division.operate = function() { return this.op1 / this.op2; };
+    Addition.prototype.operate = function() { return this.op1 + this.op2; };
+    Subtraction.prototype.operate = function() { return this.op1 - this.op2; };
+    Multiplication.prototype.operate = function() { return this.op1 * this.op2; };
+    Division.prototype.operate = function() { return this.op1 / this.op2; };
 
     function DivisionByZeroException(value) {
       this.value = value;
@@ -80,13 +80,13 @@ angular.module('flashApp')
     return {
       makeOperator : function(op, op1, op2) { 
         switch (op) {
-	case operations.ADDITION:
+	case operation.ADDITION:
 	  return new Addition(op1, op2);
-	case operations.SUBTRACTION:
+	case operation.SUBTRACTION:
           return new Subtraction(op1, op2);
-        case operations.MULTIPLICATION:
+        case operation.MULTIPLICATION:
           return new Multiplication(op1, op2);
-        case operations.DIVISION:
+        case operation.DIVISION:
           return new Division(op1, op2);
 	default: 
 	  throw new UnknownOperationException(op);
