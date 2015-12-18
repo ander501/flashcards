@@ -7,12 +7,20 @@ describe('Service: question', function () {
 
   // instantiate service
   var question;
-  beforeEach(inject(function (_question_) {
+  var operator;
+
+  beforeEach(inject(function (_question_, _operator_) {
     question = _question_;
+    operator = _operator_;
   }));
 
-  it('should do something', function () {
+  it('should return an addition question by default', function () {
     expect(!!question).toBe(true);
+    var q = question.next();
+    expect(!!q).toBe(true);    
+    expect(q instanceof operator.Addition);
+    expect(q.getFirstOperand(), 0);
+    expect(q.getSecondOperand(), 0); 
   });
 
 });

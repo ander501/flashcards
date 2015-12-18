@@ -7,46 +7,50 @@ describe('Service: operator', function () {
 
   // instantiate service
   var operator;
-  var operation;
 
   var question;
 
-  beforeEach(inject(function (_operator_, _operation_) {
+  beforeEach(inject(function (_operator_) {
     operator = _operator_;
-    operation = _operation_;
   }));
 
   it('should do addition', function () {
     expect(!!operator).toBe(true);
 
-    question = operator.makeOperator(operation.ADDITION, 1, 2);
+    question = new operator.Addition(1, 2);
 
     expect(!!question).toBe(true);
     expect(question.operate()).toBe(3);
+    expect(question.isCorrect('3')).toBe(true);
   });
 
   it('should do subtraction', function () {
     expect(!!operator).toBe(true);
 
-    question = operator.makeOperator(operation.SUBTRACTION, 14, 7);
+    question = new operator.Subtraction(14, 7);
 
     expect(!!question).toBe(true);
     expect(question.operate()).toBe(7);
+    expect(question.isCorrect('7')).toBe(true);
   });
+
   it('should do multiplication', function () {
     expect(!!operator).toBe(true);
 
-    question = operator.makeOperator(operation.MULTIPLICATION, 3, 7);
+    question = new operator.Multiplication(3, 7);
 
     expect(!!question).toBe(true);
     expect(question.operate()).toBe(21);
+    expect(question.isCorrect('21')).toBe(true);
   });
+
   it('should do division', function () {
     expect(!!operator).toBe(true);
 
-    question = operator.makeOperator(operation.DIVISION, 9, 3);
+    question = new operator.Division(9, 3);
 
     expect(!!question).toBe(true);
     expect(question.operate()).toBe(3);
+    expect(question.isCorrect('3')).toBe(true);
   });
 });

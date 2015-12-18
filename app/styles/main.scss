@@ -89,3 +89,14 @@ body {
     border-bottom: 0;
   }
 }
+
+.flashcard {
+  font-size: 100px;
+  text-align: right;
+  .answer input[type=text] {
+    width: 100%;
+    padding-top: 20px;
+    border-top: medium solid #000;
+    text-align: right;
+  }
+}

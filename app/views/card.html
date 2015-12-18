@@ -1,0 +1,13 @@
+<div ng-controller="CardController">
+
+<div class="container flashcard">
+  <form class="row" ng-submit="submitAnswer()">
+    <div class="col-md-4">
+      <div class="top">{{question.op1}}</div>
+      <div class="bottom">{{question.symbol}}{{question.op2}}</div>
+      <div class="answer"><input type="text" ng-model="answer"/></div>
+    </div>
+  </form>
+</div>
+
+</div>

@@ -28,6 +28,12 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
+      .state('drill', {
+        url: '/drill',
+        templateUrl: 'views/card.html',
+        controller: 'CardController',
+        controllerAs: 'card'
+	})
       .state('about', {
         url: '/about',
         templateUrl: 'views/about.html',

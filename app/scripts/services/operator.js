@@ -8,7 +8,7 @@
  * Factory in the flashApp.
  */
 angular.module('flashApp')
-  .factory('operator', ['operation', function (operation) {
+  .factory('operator', function (operation) {
 
     function BinaryOperator(op1, op2) {
 	this.setOperands(op1, op2);
@@ -25,6 +25,10 @@ angular.module('flashApp')
 
     BinaryOperator.prototype.getSecondOperand = function() {
        return this.op1;
+    };
+
+    BinaryOperator.prototype.isCorrect = function(answer) {
+       return ( parseInt(answer, 10) === this.operate() );
     };
 
     function Addition(op1, op2) {
@@ -69,28 +73,10 @@ angular.module('flashApp')
       };
     }	
 
-    function UnknownOperationException(value) {
-	this.value = value;
-        this.message = 'is an unknown operation';
-        this.toString = function() {
-          return this.value + ' ' + this.message;
-        };
-    }
-
     return {
-      makeOperator : function(op, op1, op2) { 
-        switch (op) {
-	case operation.ADDITION:
-	  return new Addition(op1, op2);
-	case operation.SUBTRACTION:
-          return new Subtraction(op1, op2);
-        case operation.MULTIPLICATION:
-          return new Multiplication(op1, op2);
-        case operation.DIVISION:
-          return new Division(op1, op2);
-	default: 
-	  throw new UnknownOperationException(op);
-	}
-      }
-    };
-  }]);
+	Addition : Addition,
+        Multiplication: Multiplication,
+	Subtraction: Subtraction,
+	Division: Division
+    }; 
+  });
