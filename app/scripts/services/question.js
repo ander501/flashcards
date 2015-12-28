@@ -19,7 +19,17 @@ angular.module('flashApp')
 	       
 		var activeOperations = [ operator.Addition, operator.Subtraction, operator.Multiplication];
 
-		var deck = new Queue();
+		var deck = new Heap(comparison);
+
+                var comparison = function(question1, question2) {
+			return question2.index - question1.index;
+		};
+
+                var shuffleQuestions = function() {
+			angular.forEach(questions, function(question) {
+				question.index = Math.floor(Math.random() * 1024576);
+			});
+                };
 
 		function makeQuestions() {
 			angular.forEach(activeOperations, function(op) {
@@ -37,17 +47,21 @@ angular.module('flashApp')
 		}
 
 		function applyFilter() {
-			deck = new Queue();
+			deck = new Heap(comparison);comparison;
 
 			angular.forEach(questions, function(question) {
 				if (filter(question)) {
-					deck.enqueue(question);
+					deck.push(question);
 				}
 			});	
                 }	
 
 		function setFilter(newFilter) {
 			filter = newFilter;
+		}
+
+                function setComparison(compareFunction) {
+			comparison = compareFunction;
 		}
 
 		makeQuestions();
@@ -57,13 +71,14 @@ angular.module('flashApp')
 			next : function(lastQuestion, correct) {
 				if (lastQuestion !== undefined) {
 					if (!correct) {
-						deck.enqueue(lastQuestion);
+						deck.push(lastQuestion);
 					}				
 				}
 
-				return deck.dequeue();
+				return deck.pop();
 			},
 			setFilter: setFilter,
-			applyFilter: applyFilter
+			applyFilter: applyFilter,
+                        setComparison: setComparison
 		};
 	});
