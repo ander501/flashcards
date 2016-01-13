@@ -8,15 +8,19 @@
  * Controller of the flashApp
  */
 angular.module('flashApp')
-  .controller('CardController', function ($scope, question) {
+  .controller('CardController', function ($scope, question, cardfilter, activeOperator) {
 
-	$scope.question = question.next();
-
-	$scope.answer = '';
-
-	$scope.correct = 0;
-
-	$scope.attempted = 0;
+	$scope.reset = function() {
+		question.applyFilter();
+	
+		$scope.correct = 0;
+		$scope.attempted = 0;
+        	$scope.total = question.remaining();
+		$scope.answer = '';
+                $scope.finished = 0;
+		
+		$scope.question = question.next();
+        };
 
 	$scope.submitAnswer = function() {
 
@@ -30,6 +34,8 @@ angular.module('flashApp')
 
 		$scope.question = question.next($scope.question, isCorrect);
 		$scope.answer = '';
+                $scope.finished = Math.floor( $scope.correct / $scope.total * 100);
 	};
-	
+
+	$scope.reset();	
   });

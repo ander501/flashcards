@@ -9,7 +9,7 @@
  * Serve the next question on the flashcards. 
  */
 angular.module('flashApp')
-	.service('question', function (operator) {
+	.service('question', function (operator, Bag) {
 
 		var questions = [];
 
@@ -19,17 +19,11 @@ angular.module('flashApp')
 	       
 		var activeOperations = [ operator.Addition, operator.Subtraction, operator.Multiplication];
 
-		var deck = new Heap(comparison);
+		var deck = new Bag();
 
                 var comparison = function(question1, question2) {
 			return question2.index - question1.index;
 		};
-
-                var shuffleQuestions = function() {
-			angular.forEach(questions, function(question) {
-				question.index = Math.floor(Math.random() * 1024576);
-			});
-                };
 
 		function makeQuestions() {
 			angular.forEach(activeOperations, function(op) {
@@ -46,8 +40,12 @@ angular.module('flashApp')
 			});
 		}
 
+                function remaining() {
+			return deck.size();
+		}
+
 		function applyFilter() {
-			deck = new Heap(comparison);comparison;
+			deck = new Bag();
 
 			angular.forEach(questions, function(question) {
 				if (filter(question)) {
@@ -77,6 +75,7 @@ angular.module('flashApp')
 
 				return deck.pop();
 			},
+			remaining: remaining,			
 			setFilter: setFilter,
 			applyFilter: applyFilter,
                         setComparison: setComparison

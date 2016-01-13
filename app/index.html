@@ -81,19 +81,24 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
-    <script src="bower_components/heap/lib/heap.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/dexie/dist/latest/Dexie.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/Queue.src.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/services/question.js"></script>
         <script src="scripts/services/operation.js"></script>
         <script src="scripts/services/operator.js"></script>
         <script src="scripts/controllers/card.js"></script>
+        <script src="scripts/services/bag.js"></script>
+        <script src="scripts/services/cardfilter.js"></script>
+        <script src="scripts/controllers/deckfilter.js"></script>
+        <script src="scripts/controllers/practice.js"></script>
+        <script src="scripts/services/questionstorage.js"></script>
         <!-- endbuild -->
 </body>
 </html>

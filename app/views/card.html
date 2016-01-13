@@ -1,4 +1,4 @@
-<div ng-controller="CardController">
+<div>
 
 <div class="container flashcard">
   <form class="row" ng-submit="submitAnswer()">
@@ -6,8 +6,13 @@
       <div class="top">{{question.op1}}</div>
       <div class="bottom">{{question.symbol}}{{question.op2}}</div>
       <div class="answer"><input type="text" ng-model="answer"/></div>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="{{correct}}" aria-valuemin="0" aria-valuemax="{{total}}" style="width: {{finished}}%;">
+        {{ finished }}%
+      </div>
     </div>
   </form>
 </div>
 
+</div>
 </div>

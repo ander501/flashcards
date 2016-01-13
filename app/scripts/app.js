@@ -28,16 +28,26 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .state('drill', {
-        url: '/drill',
+      .state('practice', {
+        url: '/practice',
+        templateUrl: 'views/practice.html',
+        controller: 'PracticeController',
+        controllerAs: 'practice'
+	})
+      .state('practice.addition', {
+	url: '/addition',
         templateUrl: 'views/card.html',
         controller: 'CardController',
-        controllerAs: 'card'
-	})
+        controllerAs: 'card',
+	resolve: {
+          activeOperator: function(operator) {
+            return operator.Addition;
+	  }}
+        })
       .state('about', {
         url: '/about',
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
-      });
+      })
   }]);

@@ -39,6 +39,7 @@ angular.module('flashApp')
 	this.setOperands(op1, op2);
     }
 
+
     function Multiplication(op1, op2) {
 	this.setOperands(op1, op2);
     }
@@ -54,6 +55,11 @@ angular.module('flashApp')
     Subtraction.prototype = Object.create(BinaryOperator.prototype);
     Multiplication.prototype = Object.create(BinaryOperator.prototype);
     Division.prototype = Object.create(BinaryOperator.prototype);
+
+    Addition.prototype.label = 'addition';
+    Subtraction.prototype.label = 'subtraction';
+    Multiplication.prototype.label = 'multiplication';
+    Division.prototype.label = 'division';
 
     Addition.prototype.symbol = '+';
     Subtraction.prototype.symbol = '-';
@@ -72,7 +78,7 @@ angular.module('flashApp')
         return 'DivisionByZeroException: ('+ this.value + '), ' + this.message;
       };
     }	
-
+   
     return {
 	Addition : Addition,
         Multiplication: Multiplication,

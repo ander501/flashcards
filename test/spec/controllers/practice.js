@@ -1,23 +1,23 @@
 'use strict';
 
-describe('Controller: CardCtrl', function () {
+describe('Controller: PracticeController', function () {
 
   // load the controller's module
   beforeEach(module('flashApp'));
 
-  var CardCtrl,
+  var PracticeController,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    CardCtrl = $controller('CardController', {
+    PracticeController = $controller('PracticeController', {
       $scope: scope
       // place here mocked dependencies
     });
   }));
 
   it('should attach a list of awesomeThings to the scope', function () {
-    expect(CardCtrl.awesomeThings.length).toBe(3);
+    expect(PracticeController.awesomeThings.length).toBe(3);
   });
 });
