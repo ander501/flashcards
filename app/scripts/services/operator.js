@@ -13,10 +13,16 @@ angular.module('flashApp')
     function BinaryOperator(op1, op2) {
 	this.setOperands(op1, op2);
     }
-  
+
+    BinaryOperator.prototype.getMagnitude = function() {
+      return Math.max(Math.abs(this.op1), Math.abs(this.op2), Math.abs(this.operate())); 
+
+    };  
     BinaryOperator.prototype.setOperands = function(op1, op2) {
       this.op1 = op1;
       this.op2 = op2;
+
+      this.magnitude = this.getMagnitude();
     };
 
     BinaryOperator.prototype.getFirstOperand = function() {
